@@ -3,7 +3,7 @@ package com.example.desafiofilmes.data.di
 import android.util.Log
 import com.example.desafiofilmes.data.repository.MovieRepository
 import com.example.desafiofilmes.data.repository.MovieRepositoryImpl
-import com.example.desafiofilmes.service.TmdbService
+import com.example.desafiofilmes.data.service.TmdbService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

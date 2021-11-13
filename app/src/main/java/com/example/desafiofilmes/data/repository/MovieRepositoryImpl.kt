@@ -1,12 +1,12 @@
 package com.example.desafiofilmes.data.repository
 
-import com.example.desafiofilmes.model.Movie
-import com.example.desafiofilmes.model.MovieList
-import com.example.desafiofilmes.service.TmdbService
+import com.example.desafiofilmes.data.model.MovieBody
+import com.example.desafiofilmes.data.model.MovieList
+import com.example.desafiofilmes.data.service.TmdbService
 
 class MovieRepositoryImpl(private val service: TmdbService): MovieRepository {
 
-    override suspend fun getMovieById(movieId: Int): Movie {
+    override suspend fun getMovieById(movieId: Int): MovieBody {
         return service.getMovieById(movieId)
     }
 

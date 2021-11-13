@@ -1,7 +1,7 @@
-package com.example.desafiofilmes.service
+package com.example.desafiofilmes.data.service
 
-import com.example.desafiofilmes.model.Movie
-import com.example.desafiofilmes.model.MovieList
+import com.example.desafiofilmes.data.model.MovieBody
+import com.example.desafiofilmes.data.model.MovieList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,7 +12,7 @@ interface TmdbService {
     suspend fun getMovieById(
         @Path("movieId") movieId: Int,
         @Query("api_key") key: String = ApiKey.themoviedb_acess_key
-    ): Movie
+    ): MovieBody
 
     @GET("movie/{movieId}/similar")
     suspend fun getSimilarMovies(

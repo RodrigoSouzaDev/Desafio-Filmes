@@ -1,4 +1,4 @@
-package com.example.desafiofilmes.model
+package com.example.desafiofilmes.data.model
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,11 +1,13 @@
 package com.example.desafiofilmes.domain.usecases
 
 import com.example.desafiofilmes.data.repository.MovieRepository
-import com.example.desafiofilmes.model.Movie
+import com.example.desafiofilmes.data.model.MovieBody
+import com.example.desafiofilmes.domain.model.Movie
+import com.example.desafiofilmes.util.toModel
 
 class GetMovieByIdUseCase (private val repository: MovieRepository) {
 
     suspend operator fun invoke (movieId: Int): Movie {
-        return repository.getMovieById(movieId)
+        return repository.getMovieById(movieId).toModel()
     }
 }

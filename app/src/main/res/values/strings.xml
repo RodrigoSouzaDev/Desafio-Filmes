@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">DesafioFilmes</string>
+    <string name="mock_director">Christopher Nolan</string>
+    <string name="mock_castname1">Matthew McConaughey</string>
+    <string name="mock_castname_as1">Cooper</string>
+    <string name="mock_castname2">Anne Hathaway</string>
+    <string name="mock_castname_as2">Amelia Brand</string>
+    <string name="mock_moviename">Interstellar</string>
+    <string name="mock_moviereleasedate">2014</string>
+    <string name="mock_movie_genres">Drama, Adventure, Science Fiction</string>
+    <string name="mock_tagline">Mankind was born on Earth. It was never meant to die here.</string>
+
+    <string name="cast_as">as</string>
+    <string name="mock_releasedate">1994-05-09</string>
+    <string name="movie_poster_description">Movie Poster</string>
 </resources>

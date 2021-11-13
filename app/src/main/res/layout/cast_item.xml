@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:background="@color/black">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgview_cast"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mock_cast"
+            app:civ_border_color="@color/white_light"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_cast"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@string/mock_castname1"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgview_cast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgview_cast"
+            app:layout_constraintTop_toTopOf="@+id/imgview_cast"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <TextView
+            android:id="@+id/textview_label_cast_as"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cast_as"
+            android:textColor="@color/white_light"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textview_cast"
+            app:layout_constraintTop_toBottomOf="@id/textview_cast" />
+
+        <TextView
+            android:id="@+id/textview_cast_as"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="@string/mock_castname_as1"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/textview_cast"
+            app:layout_constraintStart_toEndOf="@id/textview_label_cast_as"
+            app:layout_constraintEnd_toEndOf="@id/textview_cast"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
