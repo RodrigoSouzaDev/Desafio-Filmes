@@ -1,13 +1,21 @@
 package com.example.desafiofilmes.domain.usecases
 
+import com.example.desafiofilmes.core.UseCase
 import com.example.desafiofilmes.data.repository.MovieRepository
-import com.example.desafiofilmes.data.model.MovieBody
 import com.example.desafiofilmes.domain.model.Movie
 import com.example.desafiofilmes.util.toModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
 
-class GetMovieByIdUseCase (private val repository: MovieRepository) {
+class GetMovieByIdUseCase (private val repository: MovieRepository) : UseCase<Int, Movie>() {
 
-    suspend operator fun invoke (movieId: Int): Movie {
-        return repository.getMovieById(movieId).toModel()
+    override suspend fun execute(param: Int): Flow<Movie> {
+        val movie = repository.getMovieById(param)
+        val movieModel = movie.first().toModel()
+
+        return flow {
+            emit(movieModel)
+        }
     }
 }

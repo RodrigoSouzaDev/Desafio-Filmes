@@ -13,4 +13,5 @@
     <string name="cast_as">as</string>
     <string name="mock_releasedate">1994-05-09</string>
     <string name="movie_poster_description">Movie Poster</string>
+    <string name="menu_likes">Likes</string>
 </resources>

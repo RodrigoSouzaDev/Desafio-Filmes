@@ -1,7 +1,7 @@
 package com.example.desafiofilmes.data.service
 
 import com.example.desafiofilmes.data.model.MovieBody
-import com.example.desafiofilmes.data.model.MovieList
+import com.example.desafiofilmes.data.model.MovieListBody
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -19,13 +19,7 @@ interface TmdbService {
         @Path("movieId") movieId: Int,
         @Query("page") page: Int = 1,
         @Query("api_key") key: String = ApiKey.themoviedb_acess_key,
-    ): MovieList
+    ): MovieListBody
 
     //TODO: Receber os dados de configuração e cachear em DataStorage.
 }
-
-//
-//@GET("configuration")
-//suspend fun getConfiguration(
-//    @Query("api_key") key: String = ApiKey.themoviedb_acess_key
-//)

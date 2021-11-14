@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="1dp"
     android:background="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,8 +18,8 @@
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
             android:id="@+id/movieitem_imgview_poster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="160dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
@@ -32,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/movieitem_textview_moviename"
+            android:id="@+id/movieitem_textview_movietitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -49,37 +48,29 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/movieitem_textview_releasedate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/mock_moviereleasedate"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@id/movieitem_textview_moviename"
-            app:layout_constraintTop_toBottomOf="@id/movieitem_textview_moviename" />
-
-        <TextView
             android:id="@+id/movieitem_textview_genres"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
-            android:lines="1"
+            android:maxLines="2"
             android:text="@string/mock_movie_genres"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/movieitem_textview_moviename"
-            app:layout_constraintStart_toEndOf="@id/movieitem_textview_releasedate"
-            app:layout_constraintTop_toBottomOf="@id/movieitem_textview_moviename" />
+            app:layout_constraintEnd_toEndOf="@id/movieitem_textview_movietitle"
+            app:layout_constraintStart_toStartOf="@+id/movieitem_textview_movietitle"
+            app:layout_constraintTop_toBottomOf="@id/movieitem_textview_movietitle"
+            app:layout_constraintBottom_toTopOf="@id/movieitem_textview_overview"/>
 
         <TextView
-            android:id="@+id/movieitem_textview_"
+            android:id="@+id/movieitem_textview_overview"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:ellipsize="end"
+            android:maxLines="4"
             android:text="@string/mock_tagline"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

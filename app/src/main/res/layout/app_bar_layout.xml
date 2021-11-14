@@ -34,7 +34,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
-                android:src="@drawable/mock_movieposter_w500" />
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -42,11 +42,12 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/degrade"/>
 
-                <androidx.appcompat.widget.Toolbar
+                <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:contentInsetStart="0dp"
+                    android:layout_gravity="bottom"
                     app:contentInsetStartWithNavigation="0dp"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
@@ -55,10 +56,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:title="Interstellar"
                     app:titleTextColor="@color/white">
 
-                </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.appbar.MaterialToolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

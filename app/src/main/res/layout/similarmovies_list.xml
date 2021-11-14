@@ -1,65 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_similarmovies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardview_similarmovies_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-            <include
-                android:id="@+id/included_cardview_similarmovies_1"
-                layout="@layout/movie_item"/>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardview_similarmovies_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/cardview_similarmovies_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-            <include
-                android:id="@+id/included_cardview_similarmovies_2"
-                layout="@layout/movie_item"/>
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/similarmovies_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="See more..."
-            app:layout_constraintTop_toBottomOf="@id/cardview_similarmovies_2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyler_similarmovies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/constraint_similarmovies"
+        android:layout_height="360dp"
+        android:nestedScrollingEnabled="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        tools:itemCount="2"
         tools:listitem="@layout/movie_item"/>
+
+    <Button
+        android:id="@+id/similarmovies_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="See more..."
+        app:layout_constraintTop_toBottomOf="@id/recyler_similarmovies"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

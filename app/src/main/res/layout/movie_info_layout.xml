@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_movie_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -57,6 +56,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:elegantTextHeight="true"
         android:text="The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage."
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,58 +148,6 @@
         app:layout_constraintTop_toBottomOf="@id/textview_runtime" />
 
     <TextView
-        android:id="@+id/textview_label_director"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Director"
-        android:textStyle="bold"
-        android:textColor="@color/white_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_label_genre" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_director"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_label_director">
-        <include
-            android:id="@+id/included_director_item"
-            layout="@layout/director_item" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/textview_label_cast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Cast"
-        android:textStyle="bold"
-        android:textColor="@color/white_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview_director"/>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_cast_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textview_label_cast"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
-        <include
-            android:id="@+id/included_cast_list"
-            layout="@layout/cast_list"/>
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
         android:id="@+id/textview_label_similar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -209,19 +157,20 @@
         android:textStyle="bold"
         android:textColor="@color/white_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview_cast_list"/>
+        app:layout_constraintTop_toBottomOf="@id/textview_label_genre"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_similarmovies_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_label_similar">
+
         <include
             android:id="@+id/included_similarmovies_list"
             layout="@layout/similarmovies_list" />
     </com.google.android.material.card.MaterialCardView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
