@@ -5,16 +5,17 @@ O desafio consistia em criar um app que se assemelhasse a tela de informações 
 <div style="display:flex; justify-content: space-between;">
     <div>
       <img src="https://is4-ssl.mzstatic.com/image/thumb/Purple114/v4/97/0e/e2/970ee217-13cf-1674-b016-461aca657663/pr_source.png/460x0w.png"
-           style="display:block; width:400px;"
+           style="display:block; width:300px;"
            />
        <p style="text-align:center"> Screenshot de referência </p>
     </div>
     <div>
            <img src="screenshots/screen_avengers.jpg"
-           style="display:block; width:400px;"/>
+           style="display:block; width:300px;"/>
         <p style="text-align:center">Screenshot do meu app</p>
     </div>
 </div>
+
 
 
 
@@ -63,24 +64,23 @@ Para obter as informações sobres os filmes, foi pedido que utilize a api do si
 Estou bem satisfeito com o resultado final, consegui fazer a maioria do que pretendia fazer desde o começo do projeto, com mais tempo gostaria de aprender a usar o DataStore para cachear alguma informações da api em que utilizei enums, como Lista de Gêneros de filmes, e configurações para a exibição de imagens, assim também como uma sessão que mostrassem o diretor e diretores envolvidos em cada filme.
 
 <div style="display:flex; justify-content: space-between;">
-	<div>
-		<video width="230" height="500" controls style="display:block;">
-			<source src="videos/collapsintb_video.webm" type="video/webm">
-		</video>
-		<p style="text-align:center"> Collapsing Toolbar com o cartaz do Filme</p>
-	</div>
-	<div>
-		<video width="230" height="500" controls style="display:block;">
-			<source src="videos/movielist_video.webm" type="video/webm">
-		</video>
-		<p style="text-align:center"> Lista de Filmes</p>
-	</div>
-	<div>
-		<video width="230" height="500" controls style="display:block;">
-			<source src="videos/newmovie_video.webm" type="video/webm">
-		</video>
-		<p style="text-align:center"> Filme da lista sendo carregado no layout</p>
-	</div>
-</div>
+    <div>
+      <img src="screenshots/collapsintb_video.gif"
+           style="display:block; width:300px;"/>
+       <p style="text-align:center">Collapsing Toolbar</p>
+    </div>
+    <div>
+           <img src="screenshots/movielist_video.gif"
+           style="display:block; width:300px;"/>
+        	<p style="text-align:center">Lista de Filmes</p>
+    </div>
+
+
+   	<div>
+   	       <img src="screenshots/newmovie_video.gif"
+   	       style="display:block; width:300px;"/>
+   	    	<p style="text-align:center">Carregando um Filme da lista no Layout</p>
+   	</div>
+   	</div>
 
 Consegui também adicionar funções que não foram solicitadas, como conseguir carregar os filmes da lista de similares, e utilizar tela de carregamentos. Mas gostaria mesmo de ter utilizado o Jetpack Navigation para fazer pelo menos mais uma tela, para pesquisa de filmes pelo nome, utilizando o endpoint [search/movie]([The Movie Database API (themoviedb.org)](https://developers.themoviedb.org/3/search/search-movies)).
