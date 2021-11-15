@@ -74,13 +74,11 @@ Estou bem satisfeito com o resultado final, consegui fazer a maioria do que pret
            style="display:block; width:300px;"/>
         	<p style="text-align:center">Lista de Filmes</p>
     </div>
-
-
    	<div>
    	       <img src="screenshots/newmovie_video.gif"
    	       style="display:block; width:300px;"/>
    	    	<p style="text-align:center">Carregando um Filme da lista no Layout</p>
    	</div>
-   	</div>
+</div>
 
 Consegui também adicionar funções que não foram solicitadas, como conseguir carregar os filmes da lista de similares, e utilizar tela de carregamentos. Mas gostaria mesmo de ter utilizado o Jetpack Navigation para fazer pelo menos mais uma tela, para pesquisa de filmes pelo nome, utilizando o endpoint [search/movie]([The Movie Database API (themoviedb.org)](https://developers.themoviedb.org/3/search/search-movies)).
