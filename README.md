@@ -1,6 +1,6 @@
 # Desafio - Filmes :movie_camera::vhs:
 
-O desafio consistia em criar um app que se assemelhasse a tela de informações do filme do app [TodoMovies]([‎TodoMovies na App Store (apple.com)](https://apps.apple.com/br/app/todomovies-4/id792499896)) .
+O desafio consistia em criar um app que se assemelhasse a tela de informações do filme do app [TodoMovies](https://apps.apple.com/br/app/todomovies-4/id792499896).
 
 <div style="display:flex; justify-content: space-between;">
     <div>
@@ -38,11 +38,8 @@ Para obter as informações sobres os filmes, foi pedido que utilize a api do si
 - [x] Substituir o “3 of 10 watched” por “ views”, utilizando o valor retornado da API e mantendo algum ícone ao lado.
 - [x] O ícone de like (coração) deve mudar quando clicado, alternando entre preenchido e vazio.
 - [x] Deve haver uma lista de filmes abaixo dos detalhes.
-- [x] Utilizar os métodos (GET,POST,PUT,PATCH,DELETE)
 - [x] O app deve ser desenvolvido utilizando a linguagem Kotlin.
 - [x] O projeto deve ser disponibilizado em um repositório aberto no GitHub. Envie a URL assim que possível.
-
-
 
 ## Tecnologias utilizadas
 
@@ -54,12 +51,9 @@ Para obter as informações sobres os filmes, foi pedido que utilize a api do si
 
 - RecyclerView com ListAdapter para exibição de listas.
 
-  
-
 ## Resultado
 
 [Acesse aqui o link para o vídeo no youtube, contendo o resultado final do app:](https://www.youtube.com/shorts/FzlaP0FybDc)
-
 
 Estou bem satisfeito com o resultado final, consegui fazer a maioria do que pretendia fazer desde o começo do projeto, com mais tempo gostaria de aprender a usar o DataStore para cachear alguma informações da api em que utilizei enums, como Lista de Gêneros de filmes, e configurações para a exibição de imagens, assim também como uma sessão que mostrassem o diretor e diretores envolvidos em cada filme.
 
@@ -81,4 +75,4 @@ Estou bem satisfeito com o resultado final, consegui fazer a maioria do que pret
    	</div>
 </div>
 
-Consegui também adicionar funções que não foram solicitadas, como conseguir carregar os filmes da lista de similares, e utilizar tela de carregamentos. Mas gostaria mesmo de ter utilizado o Jetpack Navigation para fazer pelo menos mais uma tela, para pesquisa de filmes pelo nome, utilizando o endpoint [search/movie]([The Movie Database API (themoviedb.org)](https://developers.themoviedb.org/3/search/search-movies)).
+Consegui também adicionar funções que não foram solicitadas, como conseguir carregar os filmes da lista de similares, e utilizar tela de carregamentos. Mas gostaria mesmo de ter utilizado o Jetpack Navigation para fazer pelo menos mais uma tela, para pesquisa de filmes pelo nome, utilizando o endpoint [search/movie](https://developers.themoviedb.org/3/search/search-movies).
