@@ -57,9 +57,8 @@ Para obter as informações sobres os filmes, foi pedido que utilize a api do si
 
 ## Resultado
 
-<div>
-    <iframe width="360" height="800" src="https://www.youtube.com/shorts/FzlaP0FybDc"  allowfullscreen />
-</div>
+[Acesse aqui o link para o vídeo no youtube, contendo o resultado final do app:](https://www.youtube.com/shorts/FzlaP0FybDc)
+
 
 Estou bem satisfeito com o resultado final, consegui fazer a maioria do que pretendia fazer desde o começo do projeto, com mais tempo gostaria de aprender a usar o DataStore para cachear alguma informações da api em que utilizei enums, como Lista de Gêneros de filmes, e configurações para a exibição de imagens, assim também como uma sessão que mostrassem o diretor e diretores envolvidos em cada filme.
 
