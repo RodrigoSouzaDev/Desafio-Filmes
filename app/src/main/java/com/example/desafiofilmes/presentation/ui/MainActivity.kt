@@ -2,18 +2,25 @@ package com.example.desafiofilmes.presentation.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import com.example.desafiofilmes.MainActivityViewModel
+import com.bumptech.glide.Glide
+import com.example.desafiofilmes.presentation.viewmodel.MainActivityViewModel
 import com.example.desafiofilmes.R
 import com.example.desafiofilmes.core.extensions.canToastThis
 import com.example.desafiofilmes.core.extensions.checkConnection
 import com.example.desafiofilmes.core.extensions.expand
-import com.example.desafiofilmes.core.extensions.glideThis
+import com.example.desafiofilmes.core.extensions.retract
 import com.example.desafiofilmes.databinding.ActivityMainBinding
 import com.example.desafiofilmes.presentation.adapter.SimilarMoviesAdapter
 import com.example.desafiofilmes.util.*
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
@@ -24,27 +31,70 @@ class MainActivity : AppCompatActivity() {
         )
     }
     private val viewModel: MainActivityViewModel by inject()
-    private val adapter by lazy { SimilarMoviesAdapter() }
-    private val movieId: Int = MovieIdEnum.COBRA.id
+    private val adapter by lazy { SimilarMoviesAdapter(onMovieClicked()) }
+    private val dialog: AlertDialog by lazy {
+        createDialogProgress()
+    }
+
     private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        dialog.show()
         toolbar = binding.toolbar
         setContentView(binding.root)
         setSupportActionBar(toolbar)
         setObservers()
         setButtonLikeOnClick()
+        setBackButtonOnClick()
+        searchMovie(MOVIE_ID)
+    }
+
+    private fun searchMovie(id: Int) {
+
+        if(!dialog.isShowing){
+            dialog.show()
+            configLayoutForNewMovie()
+        }
+
         if(checkConnection()){
-            searchMovie(movieId)
+            viewModel.getMovieById(id)
+            viewModel.getSimilarMovies(id)
         }
         else{
-            canToastThis("Sem Conexão Com a internet")
+
+            MaterialAlertDialogBuilder(this@MainActivity)
+                .setTitle("No internet connection")
+                .setMessage("want to try again?")
+                .setNegativeButton("No") { dialog, which ->
+                    finish()
+                }
+                .setPositiveButton("Yes") { dialog, which ->
+                    searchMovie(id)
+                }.setCancelable(false)
+                .create().show()
+
+            canToastThis("You don't have an internet connection,want to try again? ")
+        }
+    }
+
+    private fun createDialogProgress(): AlertDialog{
+        val view = View.inflate(baseContext,R.layout.progress_dialog,null)
+
+        return AlertDialog.Builder(this@MainActivity,R.style.DialogTheme)
+            .setView(view)
+            .create()
+    }
+
+    private fun setBackButtonOnClick() {
+        binding.backButton.setOnClickListener{
+            onBackPressed()
         }
     }
 
     private fun setButtonLikeOnClick() {
+
         if(binding.imgvTbLikes.isGone){
             binding.imgvTbLikes.visibility = View.VISIBLE
         }
@@ -65,23 +115,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun searchMovie(movieId: Int) {
-        viewModel.getMovieById(movieId)
-        viewModel.getSimilarMovies(movieId)
+    private fun setObservers() {
+        movieInfoObserver()
+        similarMoviesObserver()
     }
 
     private fun movieInfoObserver() {
         viewModel.movieBody.observe(this, {
             when (it) {
                 MainActivityViewModel.StateMovie.Loading -> {
-                    canToastThis("Carregando Informações do Filme")
                 }
                 is MainActivityViewModel.StateMovie.Error -> {
                     it.error.message?.let { it1 -> canToastThis(it1) }
                 }
                 is MainActivityViewModel.StateMovie.Sucess -> {
                     binding.tvTbTitle.text = it.movie.movieTitle
-                    glideThis(binding.root, it.movie.posterPath, binding.imgviewPoster)
+                    glideIt(binding.root, it.movie.posterPath, binding.imgviewPoster)
                     binding.includedMovieInfoLayout.textviewGenre.text = it.movie.genres
                     binding.includedMovieInfoLayout.textviewViews.text =
                         it.movie.views
@@ -98,11 +147,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun similarMoviesObserver() {
 
-        viewModel.movieList.observe(this, { it ->
+        viewModel.movieList.observe(this, {
 
             when (it) {
                 MainActivityViewModel.StateMovieList.Loading -> {
-                    canToastThis("Carregando Filmes Similares")
                 }
                 is MainActivityViewModel.StateMovieList.Error -> {
                     it.error.message?.let { it1 -> canToastThis(it1) }
@@ -112,17 +160,57 @@ class MainActivity : AppCompatActivity() {
                     adapter.submitList(it.movieList)
 
                     connectAdapter()
-                    setButtonOnClick()
+                    startButtonsListeners()
+
+                    CoroutineScope(Dispatchers.IO).launch{
+                        Thread.sleep(1500)
+                        dialog.dismiss()
+                    }
                 }
             }
         })
     }
 
-    private fun setButtonOnClick() {
 
+    private fun glideIt(with: View, url: String?, into: ImageView){
+        if(url != null){
+            Glide
+                .with(with)
+                .load(url)
+                .into(into)
+        } else {
+            Glide
+                .with(with)
+                .load("@drawable/mock_image_not_found")
+                .into(into)
+        }
+
+    }
+    private fun startButtonsListeners() {
+
+        setButtonLessOnClickListener()
+        setButtonMoreOnClickListener()
+
+    }
+
+    private fun configLayoutForNewMovie(){
+
+        binding.appbarLayout.setExpanded(true)
+        viewModel.resetMovieLike()
+        binding.includedMovieInfoLayout.recyclerMovies.retract()
+        binding.scrollView.smoothScrollTo(0,binding.root.top,1000)
+        binding.includedMovieInfoLayout.buttonMoviesSeeLess.visibility= View.GONE
+        binding.includedMovieInfoLayout.buttonMoviesSeeMore.visibility= View.VISIBLE
+    }
+
+    private fun onMovieClicked(): (Int) -> Unit {
+        return { searchMovie(it)}
+    }
+
+    private fun setButtonMoreOnClickListener() {
         binding
             .includedMovieInfoLayout
-            .buttonMovies
+            .buttonMoviesSeeMore
             .setOnClickListener {
 
                 binding
@@ -130,6 +218,22 @@ class MainActivity : AppCompatActivity() {
                     .recyclerMovies.expand()
 
                 it.visibility = View.GONE
+                binding.includedMovieInfoLayout.buttonMoviesSeeLess.visibility= View.VISIBLE
+            }
+    }
+
+    private fun setButtonLessOnClickListener(){
+        binding
+            .includedMovieInfoLayout
+            .buttonMoviesSeeLess
+            .setOnClickListener {
+
+                binding
+                    .includedMovieInfoLayout
+                    .recyclerMovies.retract()
+
+                it.visibility = View.GONE
+                binding.includedMovieInfoLayout.buttonMoviesSeeMore.visibility= View.VISIBLE
             }
     }
 
@@ -137,11 +241,15 @@ class MainActivity : AppCompatActivity() {
         binding
             .includedMovieInfoLayout
             .recyclerMovies
+            .retract()
+
+        binding
+            .includedMovieInfoLayout
+            .recyclerMovies
             .adapter = adapter
     }
 
-    private fun setObservers() {
-        movieInfoObserver()
-        similarMoviesObserver()
+    companion object{
+        val MOVIE_ID: Int  = MovieIdEnum.RUBBER.id
     }
 }

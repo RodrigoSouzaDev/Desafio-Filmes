@@ -1,4 +1,4 @@
-package com.example.desafiofilmes
+package com.example.desafiofilmes.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,10 +11,8 @@ import com.example.desafiofilmes.domain.model.MovieListItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class MainActivityViewModel(
     private val getMovieByIdUseCase: GetMovieByIdUseCase,
@@ -65,6 +63,10 @@ class MainActivityViewModel(
         }else{
             _movieLike.postValue(false)
         }
+    }
+
+    fun resetMovieLike(){
+        _movieLike.postValue(false)
     }
 
     sealed class StateMovie{

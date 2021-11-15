@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.desafiofilmes.databinding.MovieItemBinding
 import com.example.desafiofilmes.domain.model.MovieListItem
 
-class SimilarMoviesAdapter: ListAdapter<MovieListItem, SimilarMoviesAdapter.ViewHolder>(DiffCallback()) {
+class SimilarMoviesAdapter(val onMovieClicked:(Int)-> Unit ): ListAdapter<MovieListItem, SimilarMoviesAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -21,7 +21,6 @@ class SimilarMoviesAdapter: ListAdapter<MovieListItem, SimilarMoviesAdapter.View
         holder.bind(getItem(position))
     }
 
-
     inner class ViewHolder(
         private val binding: MovieItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -30,6 +29,7 @@ class SimilarMoviesAdapter: ListAdapter<MovieListItem, SimilarMoviesAdapter.View
             binding.movieitemTextviewMovietitle.text = item.title
             binding.movieitemTextviewOverview.text = item.overview
             binding.movieitemTextviewGenres.text = item.genres
+            binding.movieitemRoot.setOnClickListener{ onMovieClicked(item.id) }
 
             Glide
                 .with(binding.root.context)

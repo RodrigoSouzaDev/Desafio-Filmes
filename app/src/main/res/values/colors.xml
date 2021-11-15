@@ -11,5 +11,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white_light">#cccccc</color>
     <color name= "transparent">#00FFFFFF</color>
+    <color name="tmdb_secondary_color">#01b4e4</color>
+    <color name="tmdb_tertiary_color">#90cea1</color>
+    <color name="grey">#ced7db</color>
 
 </resources>

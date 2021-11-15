@@ -6,3 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 fun RecyclerView.expand(){
     this.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
 }
+
+fun RecyclerView.retract(){
+    this.layoutParams.height = 1600
+}

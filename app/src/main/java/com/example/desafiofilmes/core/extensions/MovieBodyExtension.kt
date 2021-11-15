@@ -3,7 +3,6 @@ package com.example.desafiofilmes.core.extensions
 import com.example.desafiofilmes.data.model.Genre
 import com.example.desafiofilmes.data.model.MovieBody
 import com.example.desafiofilmes.domain.model.Movie
-import com.example.desafiofilmes.domain.model.MovieListItem
 import com.example.desafiofilmes.util.ImageBaseUrlEnum
 import com.example.desafiofilmes.util.PosterSizeEnum
 
@@ -23,21 +22,20 @@ fun MovieBody.toModel(): Movie {
 }
 
 private fun configViews(views: Double):String{
-    var viewsString= format(views,1)
+    var viewsString= format(views)
     viewsString += "k Views"
-    return viewsString
+    return viewsString.replace(",",".")
 }
 
 private fun configLikes(likes: Int):String{
-    var likeString = format((likes.toDouble())/1000,1)
+    var likeString = format((likes.toDouble())/1000)
     likeString += "k Likes"
-    return likeString
+    return likeString.replace(",",".")
 }
 
-private fun format(num:Double, digits: Int):String{
-    return "%.${digits}f".format(num)
+private fun format(num: Double):String{
+    return "%.${1}f".format(num)
 }
-
 
 private fun checkOverview(overview: String?): String {
     return if (overview !== null){
@@ -70,7 +68,7 @@ private fun configPosterPath(posterPath: String?, posterSize:String): String? {
 
 private fun configGenre(genres: List<Genre>):String
 {
-    var genreString: String = ""
+    var genreString = ""
 
     for (genre in genres){
         genreString += if(genre == genres.last()){
