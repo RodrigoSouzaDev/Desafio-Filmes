@@ -1,9 +1,9 @@
 package com.example.desafiofilmes.domain.usecases
 
 import com.example.desafiofilmes.core.UseCase
+import com.example.desafiofilmes.core.extensions.toModel
 import com.example.desafiofilmes.data.repository.MovieRepository
 import com.example.desafiofilmes.domain.model.Movie
-import com.example.desafiofilmes.util.toModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow

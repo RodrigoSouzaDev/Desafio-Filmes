@@ -1,8 +1,6 @@
 package com.example.desafiofilmes.data.repository
 
 import android.os.RemoteException
-import com.example.desafiofilmes.data.model.MovieBody
-import com.example.desafiofilmes.data.model.MovieListBody
 import com.example.desafiofilmes.data.service.TmdbService
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

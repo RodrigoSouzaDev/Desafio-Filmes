@@ -1,7 +1,10 @@
-package com.example.desafiofilmes.util
+package com.example.desafiofilmes.core.extensions
 
 import com.example.desafiofilmes.data.model.MovieListItemBody
 import com.example.desafiofilmes.domain.model.MovieListItem
+import com.example.desafiofilmes.util.GenreEnum
+import com.example.desafiofilmes.util.ImageBaseUrlEnum
+import com.example.desafiofilmes.util.PosterSizeEnum
 
 fun MovieListItemBody.toModel(): MovieListItem{
     return MovieListItem(

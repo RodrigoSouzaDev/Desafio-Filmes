@@ -1,9 +1,11 @@
-package com.example.desafiofilmes.util
+package com.example.desafiofilmes.core.extensions
 
 import com.example.desafiofilmes.data.model.Genre
 import com.example.desafiofilmes.data.model.MovieBody
 import com.example.desafiofilmes.domain.model.Movie
 import com.example.desafiofilmes.domain.model.MovieListItem
+import com.example.desafiofilmes.util.ImageBaseUrlEnum
+import com.example.desafiofilmes.util.PosterSizeEnum
 
 
 fun MovieBody.toModel(): Movie {
@@ -11,35 +13,31 @@ fun MovieBody.toModel(): Movie {
         this.movieId,
         this.movieTitle,
         configGenre(this.genres),
-        this.popularity.toString(),
+        configViews(this.views),
         this.releaseDate,
-        this.voteCount,
+        configLikes(this.likes),
         checkRuntime(this.runtime),
-        configPosterPath(this.posterPath,PosterSizeEnum.POSTER_SIZE_W500.size),
+        configPosterPath(this.posterPath, PosterSizeEnum.POSTER_SIZE_W500.size),
         checkOverview(this.overview),
-        checkTagline(this.tagline)
     )
 }
 
-fun MovieBody.toMovieItem(): MovieListItem
-{
-    return MovieListItem(
-        this.movieId,
-        this.movieTitle,
-        configGenre(this.genres),
-        this.releaseDate,
-        checkTagline(this.tagline),
-        configPosterPath(this.posterPath,PosterSizeEnum.POSTER_SIZE_W185.size),
-    )
+private fun configViews(views: Double):String{
+    var viewsString= format(views,1)
+    viewsString += "k Views"
+    return viewsString
 }
 
-private fun checkTagline(tagline: String?): String {
-    return if (tagline !== null){
-        tagline
-    }else{
-        ""
-    }
+private fun configLikes(likes: Int):String{
+    var likeString = format((likes.toDouble())/1000,1)
+    likeString += "k Likes"
+    return likeString
 }
+
+private fun format(num:Double, digits: Int):String{
+    return "%.${digits}f".format(num)
+}
+
 
 private fun checkOverview(overview: String?): String {
     return if (overview !== null){

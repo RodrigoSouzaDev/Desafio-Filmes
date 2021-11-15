@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_movie_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
     android:background="@color/black">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
+        android:id="@+id/imgv_movieInfo_likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,14 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="1.2k Likes"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView"
-        app:layout_constraintStart_toEndOf="@+id/imageFilterView"
-        app:layout_constraintTop_toTopOf="@+id/imageFilterView" />
+        android:maxLines="1"
+        style="@style/textViewInfoStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/imgv_movieInfo_likes"
+        app:layout_constraintStart_toEndOf="@+id/imgv_movieInfo_likes"
+        app:layout_constraintTop_toTopOf="@+id/imgv_movieInfo_likes" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView2"
+        android:id="@+id/imgv_movieInfo_views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -39,15 +40,15 @@
         app:layout_constraintTop_toTopOf="@+id/textView_likes" />
 
     <TextView
-        android:id="@+id/textview_popularity"
+        android:id="@+id/textview_views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="8.5k Popularity"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageFilterView2"
-        app:layout_constraintStart_toEndOf="@+id/imageFilterView2"
-        app:layout_constraintTop_toTopOf="@+id/imageFilterView2" />
+        android:maxLines="1"
+        style="@style/textViewInfoStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/imgv_movieInfo_views"
+        app:layout_constraintStart_toEndOf="@+id/imgv_movieInfo_views"
+        app:layout_constraintTop_toTopOf="@+id/imgv_movieInfo_views" />
 
     <TextView
         android:id="@+id/textview_overview"
@@ -56,12 +57,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:elegantTextHeight="true"
-        android:text="The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage."
-        android:textColor="@color/white"
+        style="@style/TextViewMovieItemOverViewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageFilterView" />
+        app:layout_constraintTop_toBottomOf="@id/imgv_movieInfo_likes"
+        />
 
     <TextView
         android:id="@+id/textview_label_releasedate"
@@ -69,7 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Release Date"
+        android:text="@string/label_release_date"
+        android:fontFamily="@font/roboto_medium_italic"
         android:textColor="@color/white_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_overview" />
@@ -81,11 +82,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/mock_releasedate"
-        android:textAlignment="textEnd"
         android:maxLines="1"
-        android:ellipsize="end"
-        android:textColor="@color/white"
+        style="@style/textViewInfoStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/textview_label_releasedate"
@@ -97,7 +95,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Runtime"
+        android:text="@string/label_runtime"
+        android:fontFamily="@font/roboto_medium_italic"
         android:textColor="@color/white_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_label_releasedate" />
@@ -109,11 +108,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="139 minutes"
-        android:textAlignment="textEnd"
         android:maxLines="1"
-        android:ellipsize="end"
-        android:textColor="@color/white"
+        style="@style/textViewInfoStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/textview_label_runtime"
@@ -125,7 +121,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Genre"
+        android:text="@string/label_genre"
+        android:fontFamily="@font/roboto_medium_italic"
         android:textColor="@color/white_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_label_runtime" />
@@ -137,11 +134,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:textAlignment="textEnd"
+        style="@style/textViewInfoStyle"
         android:maxLines="1"
-        android:ellipsize="end"
-        android:text="Action, Fantasy, Science Fiction"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/textview_label_genre"
@@ -153,24 +147,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_condensed_bold"
         android:text="Similar Movies"
-        android:textStyle="bold"
         android:textColor="@color/white_light"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_label_genre"/>
+        app:layout_constraintTop_toBottomOf="@id/textview_label_genre" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardview_similarmovies_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_movies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="600dp"
         android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="3"
+        tools:listitem="@layout/movie_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_label_similar">
+        app:layout_constraintTop_toBottomOf="@id/textview_label_similar"
+        />
 
-        <include
-            android:id="@+id/included_similarmovies_list"
-            layout="@layout/similarmovies_list" />
-    </com.google.android.material.card.MaterialCardView>
+    <Button
+        android:id="@+id/button_movies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_label"
+        app:layout_constraintTop_toBottomOf="@id/recycler_movies"
+        app:layout_constraintStart_toStartOf="@id/recycler_movies"
+        app:layout_constraintEnd_toEndOf="@id/recycler_movies"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

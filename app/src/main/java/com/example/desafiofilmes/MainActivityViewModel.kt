@@ -59,13 +59,12 @@ class MainActivityViewModel(
         }
     }
 
-    fun setMovieLike(): Boolean{
+    fun setMovieLike(){
         if(movieLike.value == false){
             _movieLike.postValue(true)
         }else{
             _movieLike.postValue(false)
         }
-        return true
     }
 
     sealed class StateMovie{

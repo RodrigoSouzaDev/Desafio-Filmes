@@ -14,4 +14,8 @@
     <string name="mock_releasedate">1994-05-09</string>
     <string name="movie_poster_description">Movie Poster</string>
     <string name="menu_likes">Likes</string>
+    <string name="label_release_date">Release Date</string>
+    <string name="label_runtime">Runtime</string>
+    <string name="label_genre">Genre</string>
+    <string name="button_label">See more...</string>
 </resources>

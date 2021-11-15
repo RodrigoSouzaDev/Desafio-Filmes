@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="textViewTitleStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily" >@font/bebas_neue_regular</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">gravity</item>
+    </style>
+
+    <style name="textViewMovieItemTitleStyle" parent="textViewTitleStyle">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="textViewInfoStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_italic</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextViewMovieItemGenresStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_italic</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextViewMovieItemOverViewStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/roboto_italic</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:elegantTextHeight">true</item>
+        <item name="android:justificationMode" tools:targetApi="o">inter_word</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+</resources>
